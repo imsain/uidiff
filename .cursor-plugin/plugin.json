@@ -1,11 +1,12 @@
 {
   "name": "uidiff",
-  "description": "Before/after UI screenshots and pixel diffs for a local dev server, with getBoundingClientRect measurements. macOS only. No npm dependencies; needs Chrome, git and ImageMagick.",
+  "description": "Captures a page on your local dev server before and after a code change, and produces a drag-to-compare HTML report with a pixel-accurate diff. Swaps changed files to a git ref to rebuild the \"before\" state, drives Chrome directly over the DevTools Protocol, and skips changes that couldn't possibly render differently (docs, tests, config). macOS-only, built for JS/Next.js dev servers, no npm dependencies. Use when reviewing a UI change, writing a PR description with before/after screenshots, or checking whether an edit was actually visible.",
   "version": "0.1.0",
   "author": {
     "name": "Sai Im"
   },
   "license": "Apache-2.0",
+  "logo": "assets/logo.png",
   "homepage": "https://github.com/imsain/uidiff",
   "repository": "https://github.com/imsain/uidiff",
   "keywords": [
