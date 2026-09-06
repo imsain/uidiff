@@ -1,0 +1,52 @@
+{
+  "//": "Per-repo settings only. What to capture is chosen per run on the command line, not stored here. Save this as .uidiff.json at the root of the repo you want to capture.",
+
+  "baseUrl": "http://localhost:3000",
+  "viewport": { "width": 1440, "height": 900, "scale": 2 },
+  "chromePort": 9222,
+
+  "//chromePath": "Optional. Only needed when Chrome is somewhere this tool would not look. The CHROME_PATH environment variable does the same thing.",
+
+  "//settleMs": "Budget, not a duration: the page is captured as soon as it stops fetching, and this is only how long to keep waiting for that. A dev route compiling for the first time is slow, so 12000 is a safe ceiling that a healthy page will never spend. Override per run with --settle.",
+  "settleMs": 12000,
+
+  "//reloadWaitMs": "How long the dev server needs to rebuild after `compare` swaps files on disk. This is a plain sleep, which suits a dev server with hot reload — the only kind this tool targets.",
+  "reloadWaitMs": 5000,
+
+  "//fullPage": "Capture the whole document rather than one screenful. Off by default because tall pages are slower and Chrome cannot rasterise past 16384 device pixels; --full-page turns it on per run.",
+  "fullPage": false,
+
+  "//classify": "Which changed files could alter a page. The defaults cover a JavaScript front end — JSX, CSS, images, fonts, HTML — and most projects need nothing here. Add your own regexes when a project renders something else.",
+  "//classify-example": {
+    "renders": ["\\.hbs$"],
+    "neverVisual": ["(^|/)generated/"]
+  },
+
+  "//errorSelectors": "Overlays that mean the page failed rather than rendered. Defaults cover Next.js and Vite; a failing HTTP status is detected regardless, so this is only for frameworks that return 200 with an error page. `host::shadow inner` looks inside a shadow root.",
+  "//errorSelectors-example": ["#error-page", ".exception-summary"],
+
+  "//auth": "mode: none | env (reads UIDIFF_COOKIE) | nextauth-offline (mints a session cookie with the app's own @auth/core/jwt)",
+  "auth": {
+    "mode": "none"
+  },
+
+  "//auth-env-example": "The escape hatch for anything that is not next-auth: sign in however you normally would, copy the session cookie out of the browser, and export it. A whole `name=value; other=value` string is fine, for apps that need a session and a CSRF cookie together.",
+  "//example-env": {
+    "mode": "env",
+    "envVar": "UIDIFF_COOKIE"
+  },
+
+  "//auth-nextauth-offline-example": "For a next-auth app: signs a session token with the app's own secret, so no browser and no identity provider are involved. `appDir` is where the app's package.json and node_modules live, relative to the repo root. `claims` is an optional flat map of extra JWT claims merged into the token; a string value of the form \"env:VAR_NAME\" is replaced with process.env.VAR_NAME at mint time, so a claim your app's JWT callback expects (a tenant id, an internal user id, ...) can be supplied without this tool knowing its name.",
+  "//example-nextauth": {
+    "mode": "nextauth-offline",
+    "appDir": "application/core",
+    "envFile": ".env",
+    "cookieName": "next-auth.session-token",
+    "secretEnvVar": "AUTH_SECRET",
+    "email": "user@example.com",
+    "claims": {
+      "role": "admin",
+      "employeeId": "env:UIDIFF_EMPLOYEE_ID"
+    }
+  }
+}

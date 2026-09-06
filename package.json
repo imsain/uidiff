@@ -1,0 +1,39 @@
+{
+  "name": "uidiff",
+  "version": "0.1.0",
+  "description": "Before/after UI screenshots and pixel diffs for a local dev server, with getBoundingClientRect measurements. macOS only. No npm dependencies; needs Chrome, git and ImageMagick.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "uidiff": "bin/uidiff.mjs"
+  },
+  "engines": {
+    "node": ">=21"
+  },
+  "os": [
+    "darwin"
+  ],
+  "files": [
+    "bin",
+    "lib",
+    "config.example.json",
+    "README.md",
+    "SKILL.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imsain/uidiff.git"
+  },
+  "keywords": [
+    "screenshot",
+    "visual-diff",
+    "visual-regression",
+    "chrome-devtools-protocol",
+    "cli"
+  ]
+}
