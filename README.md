@@ -148,7 +148,8 @@ Windows equivalents for `open`/`pbcopy`, a readiness poll for stacks that
 compile, and auth for apps that keep a token in `localStorage` rather than a
 cookie.
 
-Maintenance is best-effort.
+Maintenance is best-effort. See `CONTRIBUTING.md` for the mechanics of running
+tests and opening a PR.
 
 ## Licence
 
