@@ -1,0 +1,13 @@
+{
+  "name": "uidiff",
+  "owner": {
+    "name": "Sai Im"
+  },
+  "plugins": [
+    {
+      "name": "uidiff",
+      "source": "./",
+      "description": "Before/after UI screenshots and pixel-accurate diffs for a local dev server."
+    }
+  ]
+}

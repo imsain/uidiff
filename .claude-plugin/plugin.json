@@ -1,0 +1,18 @@
+{
+  "name": "uidiff",
+  "description": "Captures a page on your local dev server before and after a code change, and produces a drag-to-compare HTML report with a pixel-accurate diff. Swaps changed files to a git ref to rebuild the \"before\" state, drives Chrome directly over the DevTools Protocol, and skips changes that couldn't possibly render differently (docs, tests, config). macOS-only, built for JS/Next.js dev servers, no npm dependencies.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Sai Im"
+  },
+  "homepage": "https://github.com/imsain/uidiff",
+  "repository": "https://github.com/imsain/uidiff",
+  "license": "Apache-2.0",
+  "keywords": [
+    "screenshot",
+    "visual-diff",
+    "visual-regression",
+    "chrome-devtools-protocol",
+    "cli"
+  ]
+}

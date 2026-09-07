@@ -1,5 +1,5 @@
 ---
-name: ui-screenshot-diff
+name: uidiff
 description: >-
   Capture before/after screenshots of any route on a running local dev server
   and show the user a drag-to-compare report, using the `uidiff` CLI. Works on
@@ -23,14 +23,16 @@ base64 yourself.
 
 ```bash
 uidiff() {
-  local bin="$(git rev-parse --show-toplevel 2>/dev/null)/.cursor/skills/ui-screenshot-diff/bin/uidiff.mjs"
+  local bin="$(git rev-parse --show-toplevel 2>/dev/null)/bin/uidiff.mjs"
   [ -f "$bin" ] || { echo "uidiff: not in a checkout with the tool vendored (pwd: $PWD)" >&2; return 1; }
   node "$bin" "$@"
 }
 ```
 
-Adjust the `bin` path to wherever this tool actually lives relative to the repo
-root. **Set the working directory to the frontend checkout on every call.** In
+Adjust the `bin` path above to wherever this tool actually lives relative to
+the repo root — e.g. `.cursor/skills/uidiff/bin/uidiff.mjs` if it is vendored
+into a skills folder rather than cloned standalone. **Set the working
+directory to the frontend checkout on every call.** In
 a workspace that also has a separate backend repo open, terminals frequently
 start there instead, and the guard above is there so that shows up as one
 legible line rather than a `Cannot find module` that looks like a broken
